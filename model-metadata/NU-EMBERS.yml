@@ -1,0 +1,44 @@
+team_name: "Branching Process Collective at Northeastern University"
+team_abbr: "NU"
+model_name: "EMBERS-FLU: Ensemble of Moments of Branching-processes for Epidemic Real-time State-estimation"
+model_abbr: "EMBERS"
+model_version: "1.0"
+model_contributors: [
+ {
+    "name": "Dimitri Lopez",
+    "affiliation": "Northeastern University",
+    "email": "lopez.di@northeastern.edu",
+    "orcid": "0000-0001-8330-0591"
+  },
+  {
+    "name": "Guillaume St-Onge",
+    "affiliation": "Northeastern University",
+    "email": "g.st-onge@northeastern.edu",
+    "orcid": "0000-0001-5415-3748"
+  },
+  {
+    "name": "Mariah Boudreau",
+    "affiliation": "Northeastern University",
+    "email": "mar.boudreau@northeastern.edu",
+    "orcid": "0009-0000-1172-6497"
+  },
+  {
+    "name": "Michael Johansson",
+    "affiliation": "Northeastern University",
+    "email": "m.johansson@northeastern.edu",
+    "orcid": "0000-0002-5090-7722"
+  }
+]
+website_url: "https://github.com/dimitri-lopez"
+license: "CC-BY-4.0"
+citation: "not applicable"
+team_funding: "We acknowledge support from cooperative agreement CDC-RFA-FT-23-0069 from the CDC’s Center for Forecasting and Outbreak Analytics."
+designated_model: true
+designated_targets: ["wk inc flu hosp"]
+baseline_model: false
+methods: "An extended SLIR compartmental model defined as a branching process model with sequentially calibrated state estimation."
+data_inputs: "Weekly confirmed influenza hospital admissions and the number of hospitals reporting in each jurisdiction."
+methods_long: "EMBERS is a mechanistic and statistically interpretable effective reproduction number inference engine built for operational forecasting. The epidemic is modelled as a branching process formulation of an extended SLIR compartmental model, calibrated with a marginal particle filter. A forecast is decomposed into two tasks: recovering the latent state of the epidemic, and propagating it forward under the dynamics. The forecast prior on future transmission is fitted on past seasons. Jurisdictions, including the US, are fitted independently, with no spatial correlation. \"Ensemble\" refers to the ensemble of particles, each carrying the moments of the epidemic state, not to a combination of separate models."
+backfill_adjustment: "A reporting model fitted leave-one-season-out on past NHSN releases. Each recent week's published count is either already final or still to be revised, mostly upward, with jurisdiction-specific completeness shrunk toward the national pattern. When a jurisdiction's release is behind, it tends to be behind for all its recent weeks at once, so their revisions are modelled jointly. The newest week is also adjusted for the number of hospitals reporting relative to the jurisdiction's season median. The model gives a likelihood over each recent week's eventual count, which the filter assimilates in place of the raw preliminary count."
+ensemble_of_models: false
+ensemble_of_hub_models: false
